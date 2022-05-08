@@ -1,6 +1,6 @@
 import socket
 server_ips = []
-with open("ips") as f:
+with open("ips.txt") as f:
     for ip in f.readlines():
         server_ips.append(ip.rstrip())
 for ip in server_ips:
