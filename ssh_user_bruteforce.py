@@ -26,6 +26,6 @@ with open("passwords.txt", encoding="UTF-8") as f:
 for username in usernames:
     for password in passwords:
         if logging_ssh(hostname, username, password):
-            with open(f"password_to_{username}.txt", "w", encoding="utf-8") as f:
+            with open(f"data/password_to_{username}.txt", "w", encoding="utf-8") as f:
                 f.write(f"login: {username}\nPassword: {password}")
             exit()

