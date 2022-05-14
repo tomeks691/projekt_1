@@ -14,7 +14,6 @@ for ip in server_ips:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         print(f"Scanning port: {port}")
         open_ports = sock.connect_ex((ip, port))
-        print(open_ports)
         if open_ports == 0:
             service_name = socket.getservbyport(port, "tcp")
             with open("open_ports.txt", "a", encoding="UTF-8") as f:
@@ -23,7 +22,6 @@ for ip in server_ips:
 
     with open("open_ports.txt", "a", encoding="utf-8") as f:
         f.write(f"\n")
-
 
 os.remove("ips.txt")
 with open("open_ports.txt") as f:
@@ -34,3 +32,4 @@ with open("open_ports.txt") as f:
                 f.write(f"{line[:line.index(':')]}\n")
         except:
             pass
+

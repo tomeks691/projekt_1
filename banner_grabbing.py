@@ -1,5 +1,6 @@
 import requests
 import json
+
 server_ips = []
 with open("ips.txt") as f:
     for ip in f.readlines():
