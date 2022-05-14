@@ -16,7 +16,7 @@ passwords = []
 with open("username.txt", encoding="UTF-8") as f:
     for line in f.readlines():
         usernames.append(line.strip().lower())
-with open("pass.txt", encoding="UTF-8") as f:
+with open("passwords.txt", encoding="UTF-8") as f:
     for line in f.readlines():
         passwords.append(line.strip().lower())
 for username in usernames:
